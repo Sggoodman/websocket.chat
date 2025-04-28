@@ -1,8 +1,9 @@
 # 构建阶段
-FROM golang:1.21-alpine AS builder
+FROM golang:1.23-alpine AS builder
 
 WORKDIR /app
 COPY . .
+ENV GOPROXY=https://goproxy.cn,direct
 RUN go mod download
 RUN CGO_ENABLED=0 GOOS=linux go build -o main .
 
