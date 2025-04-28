@@ -1,7 +1,7 @@
 import { API_BASE_URL } from './config';
 
 export function login(username, password) {
-  return fetch(`${API_BASE_URL}/api/login`, {
+  return fetch(`${API_BASE_URL}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password })
@@ -9,7 +9,7 @@ export function login(username, password) {
 }
 
 export function register(username, password) {
-  return fetch(`${API_BASE_URL}/api/register`, {
+  return fetch(`${API_BASE_URL}/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password })

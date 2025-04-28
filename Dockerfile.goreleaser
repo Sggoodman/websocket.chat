@@ -1,0 +1,24 @@
+# 使用 goreleaser 镜像进行构建
+FROM goreleaser/goreleaser:latest AS builder
+
+WORKDIR /app
+
+# 复制源代码
+COPY . .
+
+# 安装依赖并构建
+RUN apt-get update && \
+    apt-get install -y gcc libc6-dev && \
+    goreleaser build --snapshot --clean
+
+# 最终运行镜像
+FROM alpine:latest
+
+# 安装 SQLite 运行时依赖
+RUN apk add --no-cache sqlite-libs
+
+WORKDIR /app
+COPY --from=builder /app/dist/websocket-server_linux_amd64_v1/websocket-server .
+
+EXPOSE 8080
+CMD ["./websocket-server"]

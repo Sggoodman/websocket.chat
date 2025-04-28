@@ -1,14 +1,24 @@
 <template>
-  <div class="container">
-    <Home />
+  <div id="app">
+    <router-view></router-view>
   </div>
 </template>
 
 <script setup>
-import Home from './views/Home.vue';
+import { RouterView } from 'vue-router';
 </script>
 
 <style>
+#app {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
 body {
   background: #f6f8fa;
   font-family: Arial, Helvetica, sans-serif;
