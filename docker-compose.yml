@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   frontend:
     build:
@@ -13,10 +11,9 @@ services:
       - app-network
 
   backend:
-    image: websocket-server:latest
     build:
-      context: dist
-      dockerfile: Dockerfile.release
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     environment:
